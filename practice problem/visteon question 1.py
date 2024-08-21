@@ -1,22 +1,21 @@
 def findmissing(arr,k):
     num_set=set(arr)
-    rept=set()
     rept_num=None
-    missing=[]
+    missing=None
     for i in range(1,k+1):
         if i not in num_set:
-            missing.append(i)
+            missing=i
+            break
 
     for j in range(k-1,-1,-1):
-        if arr[j] in rept:
+        if arr[j] in num_set:
             rept_num=arr[j]
             break
-        rept.add(arr[j])
 
 
-    return [min(missing),rept_num]
+    return [missing,rept_num]
 
 
-ar=[2,2,3,4,5,6,6]
+ar=[6,1,2,3,5,5,7]
 l=len(ar)
 print(findmissing(ar,l))
